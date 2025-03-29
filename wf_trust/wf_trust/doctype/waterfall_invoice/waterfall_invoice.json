@@ -1,0 +1,90 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:WFINV-{YYYY}-{###}",
+ "creation": "2025-03-28 07:39:45.461468",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "invoice_issuer",
+  "invoice_payer",
+  "date",
+  "invoice_total_amount",
+  "section_break_eewe",
+  "payment_terms_template",
+  "payment_schedule"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "invoice_issuer",
+   "fieldtype": "Link",
+   "label": "Invoice Issuer",
+   "options": "Invoice Issuer"
+  },
+  {
+   "fieldname": "invoice_payer",
+   "fieldtype": "Link",
+   "label": "Invoice Payer",
+   "options": "Invoice Payer"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "invoice_total_amount",
+   "fieldtype": "Currency",
+   "label": "Invoice Total Amount"
+  },
+  {
+   "fieldname": "section_break_eewe",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "payment_terms_template",
+   "fieldtype": "Link",
+   "label": "Payment Terms Template",
+   "options": "Payment Terms Template"
+  },
+  {
+   "fieldname": "payment_schedule",
+   "fieldtype": "Table",
+   "label": "Payment Schedule",
+   "options": "Payment Schedule"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-03-29 13:43:20.483956",
+ "modified_by": "Administrator",
+ "module": "WF Trust",
+ "name": "Waterfall Invoice",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

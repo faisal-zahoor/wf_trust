@@ -7,8 +7,10 @@
  "engine": "InnoDB",
  "field_order": [
   "section_break_9ljs",
-  "company",
-  "payer_name"
+  "payer_name",
+  "account",
+  "column_break_atye",
+  "company"
  ],
  "fields": [
   {
@@ -29,12 +31,22 @@
    "in_preview": 1,
    "label": "Payer Name",
    "unique": 1
+  },
+  {
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "label": "Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "column_break_atye",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-29 13:43:20.030717",
+ "modified": "2025-03-29 14:34:47.288464",
  "modified_by": "Administrator",
  "module": "WF Trust",
  "name": "Invoice Payer",

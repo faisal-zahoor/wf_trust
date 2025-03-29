@@ -6,8 +6,10 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "company",
-  "issuer_name"
+  "issuer_name",
+  "account",
+  "column_break_efel",
+  "company"
  ],
  "fields": [
   {
@@ -21,12 +23,22 @@
    "fieldtype": "Data",
    "label": "Issuer Name",
    "unique": 1
+  },
+  {
+   "fieldname": "account",
+   "fieldtype": "Link",
+   "label": "Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "column_break_efel",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-29 13:43:19.599117",
+ "modified": "2025-03-29 13:59:32.253487",
  "modified_by": "Administrator",
  "module": "WF Trust",
  "name": "Invoice Issuer",

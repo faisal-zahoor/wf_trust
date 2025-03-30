@@ -1,0 +1,160 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2025-03-29 16:12:22.074441",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "waterfall_invoice",
+  "invoice_due_date",
+  "company",
+  "column_break_ioje",
+  "posting_date",
+  "payment_amount",
+  "first_party_split",
+  "section_break_iqrc",
+  "party_amounts",
+  "section_break_wnwb",
+  "payment_split",
+  "section_break_tx7d",
+  "amended_from",
+  "column_break_zlxp",
+  "journal_entry"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_tx7d",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Waterfall Payment",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "waterfall_invoice",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Waterfall Invoice",
+   "options": "Waterfall Invoice",
+   "reqd": 1
+  },
+  {
+   "fieldname": "payment_amount",
+   "fieldtype": "Currency",
+   "label": "Payment Amount",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ioje",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_iqrc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "party_amounts",
+   "fieldtype": "Table",
+   "label": "Party Amounts",
+   "no_copy": 1,
+   "options": "Waterfall Due Amounts",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "waterfall_invoice.due_date",
+   "fieldname": "invoice_due_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Invoice Due Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "first_party_split",
+   "fieldtype": "Percent",
+   "label": "First Party Split"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming Series",
+   "options": "WFPAY-.YYYY.-.",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_wnwb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "payment_split",
+   "fieldtype": "Table",
+   "label": "Payment Split",
+   "no_copy": 1,
+   "options": "Waterfall Due Amounts",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_zlxp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "journal_entry",
+   "fieldtype": "Link",
+   "label": "Journal Entry",
+   "options": "Journal Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "waterfall_invoice.company",
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-03-29 20:16:22.059875",
+ "modified_by": "Administrator",
+ "module": "WF Trust",
+ "name": "Waterfall Payment",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

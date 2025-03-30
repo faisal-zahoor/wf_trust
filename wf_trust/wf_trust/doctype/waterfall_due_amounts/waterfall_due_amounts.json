@@ -1,0 +1,44 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-03-29 16:17:09.478795",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "party",
+  "column_break_udsb",
+  "outstanding_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "column_break_udsb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "outstanding_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Outstanding Amount"
+  },
+  {
+   "fieldname": "party",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Party",
+   "options": "Waterfall Trust Party"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-03-29 19:41:22.148632",
+ "modified_by": "Administrator",
+ "module": "WF Trust",
+ "name": "Waterfall Due Amounts",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,47 +1,63 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:issuer_name",
- "creation": "2025-03-28 07:29:59.919247",
+ "autoname": "field:party_name",
+ "creation": "2025-03-28 07:24:54.627243",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "issuer_name",
+  "section_break_9ljs",
+  "party_name",
   "account",
-  "column_break_efel",
-  "company"
+  "column_break_atye",
+  "company",
+  "party_order"
  ],
  "fields": [
   {
+   "fieldname": "section_break_9ljs",
+   "fieldtype": "Section Break"
+  },
+  {
    "fieldname": "company",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Company",
    "options": "Company"
   },
   {
-   "fieldname": "issuer_name",
-   "fieldtype": "Data",
-   "label": "Issuer Name",
-   "unique": 1
+   "fieldname": "column_break_atye",
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "account",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Account",
    "options": "Account"
   },
   {
-   "fieldname": "column_break_efel",
-   "fieldtype": "Column Break"
+   "fieldname": "party_order",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Party Order"
+  },
+  {
+   "fieldname": "party_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Party Name",
+   "unique": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-29 13:59:32.253487",
+ "modified": "2025-03-29 19:38:27.735581",
  "modified_by": "Administrator",
  "module": "WF Trust",
- "name": "Invoice Issuer",
+ "name": "Waterfall Trust Party",
  "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
@@ -58,7 +74,9 @@
    "write": 1
   }
  ],
+ "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

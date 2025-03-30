@@ -85,6 +85,8 @@ app_license = "mit"
 # before_install = "wf_trust.install.before_install"
 # after_install = "wf_trust.install.after_install"
 
+after_migrate = "wf_trust.migrate.after_migrate"
+
 # Uninstallation
 # ------------
 

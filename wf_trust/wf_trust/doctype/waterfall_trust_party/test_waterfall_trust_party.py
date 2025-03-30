@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestInvoicePayer(FrappeTestCase):
+class TestWaterfallTrustParty(FrappeTestCase):
 	pass

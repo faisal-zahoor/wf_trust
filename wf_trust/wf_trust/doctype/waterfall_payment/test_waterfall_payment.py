@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestInvoiceIssuer(FrappeTestCase):
+class TestWaterfallPayment(FrappeTestCase):
 	pass

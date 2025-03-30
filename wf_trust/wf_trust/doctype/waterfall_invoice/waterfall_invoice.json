@@ -1,19 +1,24 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:WFINV-{YYYY}-{###}",
+ "autoname": "naming_series:",
  "creation": "2025-03-28 07:39:45.461468",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_section",
+  "naming_series",
+  "due_date",
+  "total_amount",
+  "column_break_pmiv",
   "company",
-  "invoice_issuer",
-  "invoice_payer",
-  "date",
-  "invoice_total_amount",
+  "invoice_from",
+  "invoice_to",
   "section_break_eewe",
   "payment_terms_template",
-  "payment_schedule"
+  "payment_schedule",
+  "amended_from",
+  "journal_entry"
  ],
  "fields": [
   {
@@ -21,28 +26,6 @@
    "fieldtype": "Link",
    "label": "Company",
    "options": "Company"
-  },
-  {
-   "fieldname": "invoice_issuer",
-   "fieldtype": "Link",
-   "label": "Invoice Issuer",
-   "options": "Invoice Issuer"
-  },
-  {
-   "fieldname": "invoice_payer",
-   "fieldtype": "Link",
-   "label": "Invoice Payer",
-   "options": "Invoice Payer"
-  },
-  {
-   "fieldname": "date",
-   "fieldtype": "Date",
-   "label": "Date"
-  },
-  {
-   "fieldname": "invoice_total_amount",
-   "fieldtype": "Currency",
-   "label": "Invoice Total Amount"
   },
   {
    "fieldname": "section_break_eewe",
@@ -59,19 +42,76 @@
    "fieldtype": "Table",
    "label": "Payment Schedule",
    "options": "Payment Schedule"
+  },
+  {
+   "fieldname": "details_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_pmiv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Due Date"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Waterfall Invoice",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "journal_entry",
+   "fieldtype": "Link",
+   "label": "Journal Entry",
+   "no_copy": 1,
+   "options": "Journal Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "WFINV-.YYYY.-"
+  },
+  {
+   "fieldname": "invoice_from",
+   "fieldtype": "Link",
+   "label": "Invoice From (Issuer)",
+   "options": "Waterfall Trust Party"
+  },
+  {
+   "fieldname": "invoice_to",
+   "fieldtype": "Link",
+   "label": "Invoice To (Payer)",
+   "options": "Waterfall Trust Party"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2025-03-29 13:43:20.483956",
+ "modified": "2025-03-29 20:20:55.477868",
  "modified_by": "Administrator",
  "module": "WF Trust",
  "name": "Waterfall Invoice",
- "naming_rule": "Expression",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
+   "amend": 1,
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -81,6 +121,7 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
+   "submit": 1,
    "write": 1
   }
  ],

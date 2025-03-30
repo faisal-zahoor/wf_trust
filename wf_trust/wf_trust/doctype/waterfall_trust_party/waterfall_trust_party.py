@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class InvoicePayer(Document):
+class WaterfallTrustParty(Document):
 	pass

@@ -68,6 +68,7 @@ class WaterfallPayment(Document):
 				"party": third_party,
 				"debit_in_account_currency": second_party_amount,
 			})
+
 			journal_entry.append("accounts", {
 				"account": second_party_account,
 				"party_type": "Waterfall Trust Party",
@@ -85,52 +86,23 @@ class WaterfallPayment(Document):
 				"party": second_party,
 				"debit_in_account_currency": first_party_amount,
 			})
+
 			journal_entry.append("accounts", {
 				"account": first_party_account,
 				"party_type": "Waterfall Trust Party",
 				"party": first_party,
 				"credit_in_account_currency": first_party_amount
 			})
-
+		
+		update_outstanding_amount(third_party, self.payment_amount, self.invoice_due_date)
+		update_outstanding_amount(second_party, second_party_amount, self.invoice_due_date)
+		update_outstanding_amount(first_party, first_party_amount, self.invoice_due_date)
+		
 		# Save and submit the journal entry
 		journal_entry.insert()
 		journal_entry.submit()
 		
 		self.db_set("journal_entry", journal_entry.name)
-
-		# Process payment distribution to invoices
-		for payment in self.payment_split:
-			issuer = payment.get("party")
-			amount_to_distribute = payment.get("outstanding_amount", 0)
-
-			# Fetch payment schedules for the issuer, ordered by due date
-			payment_schedules = frappe.db.sql("""
-				SELECT 
-					psi.name, psi.outstanding, psi.due_date
-				FROM 
-					`tabPayment Schedule` psi
-				JOIN 
-					`tabWaterfall Invoice` wi ON psi.parent = wi.name
-				WHERE 
-					wi.invoice_from = %(issuer)s
-					AND psi.outstanding > 0
-					AND psi.due_date <= %(invoice_due_date)s
-				ORDER BY 
-					psi.due_date ASC
-			""", {"issuer": issuer, "invoice_due_date": self.invoice_due_date}, as_dict=True)
-
-			# Distribute payments across schedules
-			for schedule in payment_schedules:
-				if amount_to_distribute <= 0:
-					break
-
-				outstanding = schedule.get("outstanding", 0)
-				if outstanding > 0:
-					allocated_amount = min(outstanding, amount_to_distribute)
-					amount_to_distribute -= allocated_amount
-
-					# Update the outstanding amount in the database
-					frappe.db.set_value("Payment Schedule", schedule.get("name"), "outstanding", outstanding - allocated_amount)
 
 	@frappe.whitelist()
 	def get_party_due_amounts(self):	
@@ -210,3 +182,31 @@ def get_party_amounts(self):
                 "outstanding_amount": amount,
             })
 
+def update_outstanding_amount(issuer, amount_to_distribute, invoice_due_date):
+	payment_schedules = frappe.db.sql("""
+		SELECT 
+			psi.name, psi.outstanding, psi.due_date
+		FROM 
+			`tabPayment Schedule` psi
+		JOIN 
+			`tabWaterfall Invoice` wi ON psi.parent = wi.name
+		WHERE 
+			wi.invoice_from = %(issuer)s
+			AND psi.outstanding > 0
+			AND psi.due_date <= %(invoice_due_date)s
+		ORDER BY 
+			psi.due_date ASC
+	""", {"issuer": issuer, "invoice_due_date": invoice_due_date}, as_dict=True)
+
+	# Distribute payments across schedules
+	for schedule in payment_schedules:
+		if amount_to_distribute <= 0:
+			break
+
+		outstanding = schedule.get("outstanding", 0)
+		if outstanding > 0:
+			allocated_amount = min(outstanding, amount_to_distribute)
+			amount_to_distribute -= allocated_amount
+
+			# Update the outstanding amount in the database
+			frappe.db.set_value("Payment Schedule", schedule.get("name"), "outstanding", outstanding - allocated_amount)

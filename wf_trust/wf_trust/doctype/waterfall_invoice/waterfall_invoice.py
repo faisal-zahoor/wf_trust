@@ -24,11 +24,15 @@ class WaterfallInvoice(Document):
 
 		jv_doc.append("accounts", {
 			"account": issuer_account,
+			"party_type": "Waterfall Trust Party",
+			"party": issuer,
 			"debit_in_account_currency": amount,
 		})
 
 		jv_doc.append("accounts", {
 			"account": payer_account,
+			"party_type": "Waterfall Trust Party",
+			"party": payer,
 			"credit_in_account_currency": amount,
 		})
 

@@ -46,11 +46,15 @@ class WaterfallPayment(Document):
 		# Debit total amount to the 4th party and credit to the 3rd party
 		journal_entry.append("accounts", {
 			"account": fourth_party_account,
+			"party_type": "Waterfall Trust Party",
+			"party": fourth_party,
 			"debit_in_account_currency": self.payment_amount,
 		})
 
 		journal_entry.append("accounts", {
 			"account": third_party_account,
+			"party_type": "Waterfall Trust Party",
+			"party": third_party,
 			"credit_in_account_currency": self.payment_amount
 		})
 
@@ -60,10 +64,14 @@ class WaterfallPayment(Document):
 		if second_party_amount > 0:
 			journal_entry.append("accounts", {
 				"account": third_party_account,
+				"party_type": "Waterfall Trust Party",
+				"party": third_party,
 				"debit_in_account_currency": second_party_amount,
 			})
 			journal_entry.append("accounts", {
 				"account": second_party_account,
+				"party_type": "Waterfall Trust Party",
+				"party": second_party,
 				"credit_in_account_currency": second_party_amount
 			})
 
@@ -73,10 +81,14 @@ class WaterfallPayment(Document):
 		if first_party_amount > 0:
 			journal_entry.append("accounts", {
 				"account": second_party_account,
+				"party_type": "Waterfall Trust Party",
+				"party": second_party,
 				"debit_in_account_currency": first_party_amount,
 			})
 			journal_entry.append("accounts", {
 				"account": first_party_account,
+				"party_type": "Waterfall Trust Party",
+				"party": first_party,
 				"credit_in_account_currency": first_party_amount
 			})
 

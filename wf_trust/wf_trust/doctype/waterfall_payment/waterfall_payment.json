@@ -69,7 +69,6 @@
    "read_only": 1
   },
   {
-   "fetch_from": "waterfall_invoice.due_date",
    "fieldname": "invoice_due_date",
    "fieldtype": "Date",
    "in_list_view": 1,
@@ -134,7 +133,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-03-29 20:49:03.013539",
+ "modified": "2025-03-30 09:35:45.046514",
  "modified_by": "Administrator",
  "module": "WF Trust",
  "name": "Waterfall Payment",

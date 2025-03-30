@@ -7,6 +7,11 @@ from frappe.model.document import Document
 
 class WaterfallPayment(Document):
 	def validate(self):
+		# Set the due date of this document to the first record's due date in the Payment Schedule child table
+		first_due_date = frappe.db.get_value("Payment Schedule", {"parent": self.waterfall_invoice}, "due_date", order_by="due_date ASC")
+		if first_due_date:
+			self.invoice_due_date = first_due_date
+
 		get_party_amounts(self)
 		
 	def on_submit(self):
